@@ -57,4 +57,19 @@ Your task is to make `output` show whether `input` is equal to 1 or not.
         """,
         [[0, False], [1, True], [2, False]],
        ],
+    3: ["""
+Good job! The next data types are the integer and the float.
+Integers are normal numbers like 0, 1, -3 or 501239201849231849320.
+Floats are floating-point numbers like 0.5, 3.3335 or -7.801.
+
+They support maths!
+`5 / 2` is 2.5
+`5 * 3` is 15
+`20 + 34` is 54
+`2 - 80` is -78
+`2 ** 3` is 8 (it is the times operator, equals 2 * 2 * 2)
+
+Make the `output` be the square of `input` divided by 2 plus 1/4 of `input`.
+        """,
+        [[-10, 47.5], [0, 0], [3, 5.25], [5, 13.75]],
 }
