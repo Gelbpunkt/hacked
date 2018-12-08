@@ -23,7 +23,9 @@ class Events:
         elif isinstance(error, NoAcc):
             return await ctx.send("You need to have no account to use this command.")
         elif isinstance(error, commands.CommandOnCooldown):
-            return await ctx.send(f"Cooldown! Wait {str(datetime.timedelta(seconds=error.retry_after)).split('.')[0]} and try again.")
+            return await ctx.send(
+                f"Cooldown! Wait {str(datetime.timedelta(seconds=error.retry_after)).split('.')[0]} and try again."
+            )
         print("Ignoring exception in command {}:".format(ctx.command), file=sys.stderr)
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr

@@ -1,8 +1,8 @@
 import asyncio
 from asyncio.subprocess import PIPE, STDOUT
 
-class Result:
 
+class Result:
     def __init__(self, status, stdout, stderr):
         self.status = status
         self._stdout = stdout or ""
@@ -19,21 +19,28 @@ class Result:
     def __repr__(self):
         return f"<Result status={self.status} stdout={len(self._stdout)} stderr={len(self._stderr)}>"
 
+
 async def run(shell_command):
-    p = await asyncio.create_subprocess_shell(shell_command,
-            stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    p = await asyncio.create_subprocess_shell(
+        shell_command, stdin=PIPE, stdout=PIPE, stderr=STDOUT
+    )
     stdout, stderr = await p.communicate()
     code = p.returncode
     return Result(code, stdout, stderr)
 
+
 if __name__ == "__main__":
+
     async def test():
         r = await run("pwd")
         print(r.stdout, r.stderr, r.status)
 
     import sys
+
     if sys.platform.startswith("win"):
-        loop = asyncio.ProactorEventLoop() # subprocess pipes only works with this under Win
+        loop = (
+            asyncio.ProactorEventLoop()
+        )  # subprocess pipes only works with this under Win
         asyncio.set_event_loop(loop)
     else:
         loop = asyncio.get_event_loop()

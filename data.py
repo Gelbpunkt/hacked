@@ -27,16 +27,18 @@ output = input[0]; // the first letter is the output now and it will be tested a
 """
 
 levels = {
-    1: ["""
+    1: [
+        """
 Let's get started. At the end of every line not ending with a `{` or `}`, add a `;`.
 Assign variables by using `variableName = variableValue;`.
 Variables are like a placeholder for something, they hold the value assigned until you change it.
 Your first task is to make our `output` variable 1. That's it!
 Type `///solve {codeblock}` to solve the task!
         """,
-        [[0, 1], [1, 1], [2, 1]], # data to test it against (in, out)
-       ],
-    2: ["""
+        [[0, 1], [1, 1], [2, 1]],  # data to test it against (in, out)
+    ],
+    2: [
+        """
 Well done! Now, there are some data types you should know.
 First of all, the boolean.
 Booleans are either `true` or `false`.
@@ -56,8 +58,9 @@ and a will be true.
 Your task is to make `output` show whether `input` is equal to 1 or not.
         """,
         [[0, False], [1, True], [2, False]],
-       ],
-    3: ["""
+    ],
+    3: [
+        """
 Good job! The next data types are the integer and the float.
 Integers are normal numbers like 0, 1, -3 or 501239201849231849320.
 Floats are floating-point numbers like 0.5, 3.3335 or -7.801.
@@ -72,5 +75,5 @@ They support maths!
 Make the `output` be the square of `input` divided by 2 plus 1/4 of `input`.
         """,
         [[-10, 47.5], [0, 0.0], [3, 5.25], [5, 13.75]],
-       ],
+    ],
 }
