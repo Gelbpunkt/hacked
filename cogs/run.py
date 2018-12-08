@@ -79,7 +79,7 @@ class Run:
                 await f.write(c)
             o = (
                 await self.bot.shell.run(
-                    f"/home/jens/.local/bin/mamba users/u{ctx.author.id}.mb -l"
+                    f"mamba users/u{ctx.author.id}.mb -l"
                 )
             ).stdout
             if "Undefined variable 'output'" in o:
@@ -103,7 +103,7 @@ class Run:
             await f.write(code)
         o = (
             await self.bot.shell.run(
-                f"/home/jens/.local/bin/mamba users/u{ctx.author.id}.mb -l"
+                f"mamba users/u{ctx.author.id}.mb -l"
             )
         ).stdout
         await ctx.send(f"```sh\n{o}\n```")
