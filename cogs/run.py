@@ -11,9 +11,11 @@ class Run:
 
     def cleanup_code(self, content):
         """Automatically removes code blocks from the code."""
+        print(f"```{content}```")
         # remove ```py\n```
+        content = content.lstrip("\n").rstrip("\n")
         if content.startswith('```') and content.endswith('```'):
-            return '\n'.join(content.split('\n')[1:-1])
+            return '\n'.join(l for l in content.split('\n')[1:] if l != "\n").rstrip("```")
 
         # remove `foo`
         return content.strip('` \n')
@@ -71,7 +73,7 @@ class Run:
             o = (await self.bot.shell.run(f"/home/jens/.local/bin/mamba users/u{ctx.author.id}.mb -l")).stdout
             if "Undefined variable 'output'" in o:
                 # await ctx.send(f"{c}, {o}")
-                return await ctx.send("You did not define `output`! If you did, make sure you have a newline after `///solve` and then goes your code")
+                return await ctx.send("You did not define `output`!")
             l = o.split("\n")[-2]
             if l != str(i[1]):
                 return await ctx.send(f"Your code didn't meet a test! We tested it with the input `{str(i[0])}` and got `{l}`! Expected output was `{i[1]}`.\n\nFull output below:\n```sh\n{o}```")
