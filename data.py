@@ -72,4 +72,5 @@ They support maths!
 Make the `output` be the square of `input` divided by 2 plus 1/4 of `input`.
         """,
         [[-10, 47.5], [0, 0], [3, 5.25], [5, 13.75]],
+       ],
 }
