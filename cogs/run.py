@@ -29,7 +29,7 @@ class Run:
 
     async def run_code(self, code, identifier):
         """Runs our code using a new file for it."""
-        async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
+        async with aiofiles.open(f"users/u{identifier}.mb", mode="w") as f:
             await f.write(c)
         return (await self.bot.shell.run(f"mamba users/u{identifier}.mb -l")).stdout
 
@@ -69,7 +69,7 @@ class Run:
             return await ctx.send("You finished all levels.")
         for i in input:
             c = self.make_code(i[0], code)
-            o = await self.run_code(c, identifier=ctx.author.id)
+            o = await self.run_code(c, ctx.author.id)
             if "Undefined variable 'output'" in o:
                 return await ctx.send("You did not define `output`!")
             elif (
@@ -91,7 +91,7 @@ class Run:
     async def run(self, ctx, *, code: str):
         """Run Mamba code."""
         code = self.cleanup_code(code)
-        o = await self.run_code(code, identifier=ctx.author.id)
+        o = await self.run_code(code, ctx.author.id)
         await ctx.send(f"```sh\n{o}\n```")
 
 
