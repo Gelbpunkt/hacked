@@ -94,9 +94,9 @@ They do not support `-` or `/`.
 Make output repeat the input text 4 times and add a `!` to the end.
         """,
         [
-            ["Nani", "NaniNaniNaniNani!"],
-            ["Aloha!", "Aloha!Aloha!Aloha!Aloha!!"],
-            ["Hacked.", "Hacked.Hacked.Hacked.Hacked.!"],
+            ["'Nani'", "NaniNaniNaniNani!"],
+            ["'Aloha!'", "Aloha!Aloha!Aloha!Aloha!!"],
+            ["'Hacked.'", "Hacked.Hacked.Hacked.Hacked.!"],
         ],
     ],
 }
