@@ -34,7 +34,7 @@ class Events:
             type(error), error, error.__traceback__, file=sys.stderr
         )
 
-    async def get_dbl_payload(self):
+    def get_dbl_payload(self):
         return {
             "server_count": len(self.bot.guilds),
             # "shard_count": len(self.bot.shards),
