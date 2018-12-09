@@ -9,6 +9,9 @@ from checks import *
 class Events:
     def __init__(self, bot):
         self.bot = bot
+        self.auth_headers = {
+            "Authorization": bot.config.dbltoken
+        }  # needed for DBL requests
 
     async def on_command_error(self, ctx, error):
         error = getattr(error, "original", error)
@@ -29,6 +32,26 @@ class Events:
         print("Ignoring exception in command {}:".format(ctx.command), file=sys.stderr)
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr
+        )
+
+    async def get_dbl_payload(self):
+        return {
+            "server_count": len(self.bot.guilds),
+            # "shard_count": len(self.bot.shards),
+        }
+
+    async def on_guild_join(self, guild):
+        await self.bot.session.post(
+            f"https://discordbots.org/api/bots/{self.bot.user.id}/stats",
+            data=self.get_dbl_payload(),
+            headers=self.auth_headers,
+        )
+
+    async def on_guild_remove(self, guild):
+        await self.bot.session.post(
+            f"https://discordbots.org/api/bots/{self.bot.user.id}/stats",
+            data=self.get_dbl_payload(),
+            headers=self.auth_headers,
         )
 
 

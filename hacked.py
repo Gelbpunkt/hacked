@@ -3,6 +3,7 @@ import asyncio
 import config
 import mamba
 import aioshell
+import aiohttp
 import asyncpg
 from discord.ext import commands
 import data
@@ -29,6 +30,7 @@ async def start():
     bot.shell = aioshell
     bot.load_extension("jishaku")
     bot.pool = await asyncpg.create_pool(**config.db)
+    bot.session = aiohttp.ClientSession(loop=bot.loop)
     for i in config.exts:
         bot.load_extension(i)
     await bot.start(config.token)
