@@ -171,7 +171,23 @@ Good luck!
                 ["hi", "owo", "what", "is", "this"],
                 "['this', ['owo', 'what', 'is'], 'hi']",
             ],
-            [[[1], [2], [1]], "[[1], [[2]], [1]]"],
+            [[[1], [1]], "[[1], [], [1]]"],
+        ],
+    ],
+    7: [
+        "Arrays - 3",
+        """
+Nice job! That was quite a hard task, wasn't it?
+Arrays can do even more than you know: There is `array_sort(array)`, which will sort the array.
+If it's an array of numbers, it will sort them ascending, strings will be sorted alphabetically.
+`array_reverse(array)` is self-explanatory.
+
+Your task now is to make `output` the sorted but reversed `input`, but the last item should always be `2018`.
+        """,
+        [
+            [[1, 3, 2, 4], "[4, 3, 2, 2018]"],
+            [["b", "c", "d", "e", "a"], "['e', 'd', 'c', 'b', 2018]"],
+            [[-1, -2], "[-1, 2018]"],
         ],
     ],
 }
