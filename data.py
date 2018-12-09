@@ -6,6 +6,9 @@ Type `///start` to start (you figured it out)
 Type `///task` to view your current task
 Type `///solve` to solve your current task in a code-style.
 
+The codeblocks here use JS syntax highlight because it's similar to Mamba.
+Of course it works with any other markdown as well.
+
 e.g.
 ```
 ///solve
@@ -72,8 +75,28 @@ They support maths!
 `2 - 80` is -78
 `2 ** 3` is 8 (it is the times operator, equals 2 * 2 * 2)
 
-Make the `output` be the square of `input` divided by 2 plus 1/4 of `input`.
+Make the `output` be the square of `input`, that divided by 2 and then plus 1/4 of `input`.
         """,
         [[-10, 47.5], [0, 0.0], [3, 5.25], [5, 13.75]],
+    ],
+    4: [
+        """
+Very well done! The next data type is the String.
+Strings are any characters, meaning it's basically text.
+You can put strings in `"my text"` (double quotes) or `'my text'` (single quotes), it's down to personal preferences.
+
+They can also be formatted, that will come later on.
+For now, they also support basic "maths".
+`"hi" * 5` is `"hihihihihi"`
+`"hi " + "how are you?"` is `"hi how are you?"`
+They do not support `-` or `/`.
+
+Make output repeat the input text 4 times and add a `!` to the end.
+        """,
+        [
+            ["Nani", "NaniNaniNaniNani!"],
+            ["Aloha!", "Aloha!Aloha!Aloha!Aloha!!"],
+            ["Hacked.", "Hacked.Hacked.Hacked.Hacked.!"],
+        ],
     ],
 }
