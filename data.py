@@ -103,4 +103,73 @@ Make output repeat the input text 4 times and add a `!` to the end.
             ["'Hacked.'", "Hacked.Hacked.Hacked.Hacked.!"],
         ],
     ],
+    5: [
+        "Arrays - 1",
+        """
+Awesome! The new data type introduced now is the Array. It has many functions, that's why the next tasks are all about arrays.
+Arrays are a kind of list - they can hold any number of items.
+Arrays themselves can hold more arrays!
+They are notated like this:
+`myArray = [1, 2, 3, 4, 5, 6, "7th item"];`
+`myArray2 = [[1, 2, 3, 4], ["a second array in the array", "yes nice, isn't it?"]];`
+
+You can append anything to the end of an array by using `array_push(array, item);`.
+```js
+array = [];
+array_push(array, 1);
+say(array); // is [1]
+```
+
+Your task is to make an array that consists of 3 sub-arrays with two times input in them each.
+If you can, try to use `array_push`, but it is possible without.
+        """,
+        [
+            [
+                "'A String'",
+                "[['A String', 'A String'], ['A String', 'A String'], ['A String', 'A String']]",
+            ],
+            [100, "[[100, 100], [100, 100], [100, 100]]"],
+            [[1], "[[[1], [1]], [[1], [1]], [[1], [1]]]"],
+        ],
+    ],
+    6: [
+        "Arrays - 2",
+        """
+Great job! Arrays feature even more!
+You can select specific items, insert at a specific point and remove at a specific point.
+Array items have a sorting, means, the first item can be referenced as 0, the second as 1, the third as 2, and so on.
+The last item can be referenced as -1, the second last as -2, etc.
+
+The `[index]` determines that you want the specific item from the array at the index. (This even works with strings!)
+
+```js
+array = [1, 2, 3, 4, 5];
+say(array[0]); // 1
+say(array[-1]); // 5
+string = "Hi Mom!";
+say(string[1]); // 'i'
+```
+
+You can also append or remove a specific index.
+```js
+array = [1, 2, 3, 4, 5];
+array_remove(array, 4); // remove item 4 (we start counting at 0)
+say(array); // [1, 2, 3, 4]
+array_insert(array, 2, 2.5); // insert 2.5 at the index 2
+say(array); // [1, 2, 2.5, 3, 4]
+```
+
+Your task now is to make `output` be an array. The first element of `output` should be the last element of `input` and the last element of `output` should be the first element of `input`.
+Between the first and last item should always be the rest of `input` as an array in the array (`[..., [my array], ...]`).
+Good luck!
+        """,
+        [
+            [[1, 2, 3, 4], "[4, [2, 3], 1]"],
+            [
+                ["hi", "owo", "what", "is", "this"],
+                "['this', ['owo', 'what', 'is'], 'hi']",
+            ],
+            [[[1]], "[[1], [1]]"],
+        ],
+    ],
 }
