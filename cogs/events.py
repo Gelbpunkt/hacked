@@ -54,6 +54,13 @@ class Events:
             headers=self.auth_headers,
         )
 
+    async def on_ready(self):
+        await self.bot.session.post(
+            f"https://discordbots.org/api/bots/{self.bot.user.id}/stats",
+            data=self.get_dbl_payload(),
+            headers=self.auth_headers,
+        )
+
 
 def setup(bot):
     bot.add_cog(Events(bot))
