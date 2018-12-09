@@ -1,0 +1,4 @@
+token = "bot token"
+exts = ["cogs.run", "cogs.events", "cogs.overview"]
+db = {"database": "mydb", "user": "myuser", "password": "mypass", "host": "127.0.0.1"}
+

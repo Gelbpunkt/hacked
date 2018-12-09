@@ -21,28 +21,22 @@ class Run:
         # remove `foo`
         return content.strip("` \n")
 
-    def check_sum(self, code):
-        opening = tuple("({[")
-        closing = tuple(")}]")
-        mapping = dict(zip(opening, closing))
-        queue = []
-
-        for letter in code:
-            if letter in opening:
-                queue.append(mapping[letter])
-            elif letter in closing:
-                if not queue or letter != queue.pop():
-                    return False
-        return not queue
-
     def make_code(self, pre, code):
+        """Make the code for ///solve"""
         code = textwrap.indent(code, "    ")
         code = f"function main(input) {{\n{code}\n    return output;\n}}\nsay(main({pre}));"
         return code
 
+    async def run_code(self, code, identifier):
+        """Runs our code using a new file for it."""
+        async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
+            await f.write(c)
+        return (await self.bot.shell.run(f"mamba users/u{identifier}.mb -l")).stdout
+
     @no_acc()
     @commands.command()
     async def start(self, ctx):
+        """Make an account for playing hacked."""
         await self.bot.pool.execute(
             'INSERT INTO hacked ("user", "task") VALUES ($1, $2);', ctx.author.id, 1
         )
@@ -51,11 +45,12 @@ class Run:
     @acc()
     @commands.command()
     async def task(self, ctx):
+        """View your current task."""
         val = await self.bot.pool.fetchval(
             'SELECT task FROM hacked WHERE "user"=$1;', ctx.author.id
         )
         try:
-            await ctx.send(self.bot.data.levels[val][0])
+            await ctx.send(self.bot.data.tasks[val][1])
         except KeyError:
             await ctx.send("You finished all levels.")
 
@@ -64,23 +59,22 @@ class Run:
     @commands.command()
     async def solve(self, ctx, *, code: str):
         code = self.cleanup_code(code)
-        if not self.check_sum(code):
-            return await ctx.send("You have left-open brackets!")
         val = await self.bot.pool.fetchval(
             'SELECT task FROM hacked WHERE "user"=$1;', ctx.author.id
         )
         try:
-            input = self.bot.data.levels[val][1]
+            input = self.bot.data.tasks[val][2]
         except KeyError:
             return await ctx.send("You finished all levels.")
         for i in input:
             c = self.make_code(i[0], code)
-            async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
-                await f.write(c)
-            o = (await self.bot.shell.run(f"mamba users/u{ctx.author.id}.mb -l")).stdout
+            o = await self.run(c, identifier=ctx.author.id)
             if "Undefined variable 'output'" in o:
-                # await ctx.send(f"{c}, {o}")
                 return await ctx.send("You did not define `output`!")
+            elif (
+                "illegal token 'return' found" in o
+            ):  # most likely that they forgot the colon
+                return await ctx.send("You're missing a `;` at your last line.")
             l = o.split("\n")[-2]
             if l != str(i[1]):
                 return await ctx.send(
@@ -95,9 +89,7 @@ class Run:
     @commands.command()
     async def run(self, ctx, *, code: str):
         code = self.cleanup_code(code)
-        async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
-            await f.write(code)
-        o = (await self.bot.shell.run(f"mamba users/u{ctx.author.id}.mb -l")).stdout
+        o = await self.run(code, identifier=ctx.author.id)
         await ctx.send(f"```sh\n{o}\n```")
 
 

@@ -29,8 +29,9 @@ output = input[0]; // the first letter is the output now and it will be tested a
 ```
 """
 
-levels = {
+tasks = {
     1: [
+        "Variables",
         """
 Let's get started. At the end of every line not ending with a `{` or `}`, add a `;`.
 Assign variables by using `variableName = variableValue;`.
@@ -41,6 +42,7 @@ Type `///solve {codeblock}` to solve the task!
         [[0, 1], [1, 1], [2, 1]],  # data to test it against (in, out)
     ],
     2: [
+        "Booleans",
         """
 Well done! Now, there are some data types you should know.
 First of all, the boolean.
@@ -63,6 +65,7 @@ Your task is to make `output` show whether `input` is equal to 1 or not.
         [[0, False], [1, True], [2, False]],
     ],
     3: [
+        "Integers and floats",
         """
 Good job! The next data types are the integer and the float.
 Integers are normal numbers like 0, 1, -3 or 501239201849231849320.
@@ -80,6 +83,7 @@ Make the `output` be the square of `input`, that divided by 2 and then plus 1/4 
         [[-10, 47.5], [0, 0.0], [3, 5.25], [5, 13.75]],
     ],
     4: [
+        "Strings",
         """
 Very well done! The next data type is the String.
 Strings are any characters, meaning it's basically text.
