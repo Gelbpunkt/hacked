@@ -30,7 +30,7 @@ class Run:
     async def run_code(self, code, identifier):
         """Runs our code using a new file for it."""
         async with aiofiles.open(f"users/u{identifier}.mb", mode="w") as f:
-            await f.write(c)
+            await f.write(code)
         return (await self.bot.shell.run(f"mamba users/u{identifier}.mb -l")).stdout
 
     @no_acc()
