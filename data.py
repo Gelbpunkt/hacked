@@ -33,11 +33,11 @@ tasks = {
     1: [
         "Variables",
         """
-Let's get started. At the end of every line not ending with a `{` or `}`, add a `;`.
+Let's get started. At the end of every line not ending with a `{{` or `}}`, add a `;`.
 Assign variables by using `variableName = variableValue;`.
 Variables are like a placeholder for something, they hold the value assigned until you change it.
 Your first task is to make our `output` variable 1. That's it!
-Type `{0}solve {your code in a code block}` to solve the task!
+Type `{0}solve {{your code in a code block}}` to solve the task!
         """,
         [[0, 1], [1, 1], [2, 1]],  # data to test it against (in, out)
     ],
