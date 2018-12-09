@@ -77,11 +77,7 @@ class Run:
             c = self.make_code(i[0], code)
             async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
                 await f.write(c)
-            o = (
-                await self.bot.shell.run(
-                    f"mamba users/u{ctx.author.id}.mb -l"
-                )
-            ).stdout
+            o = (await self.bot.shell.run(f"mamba users/u{ctx.author.id}.mb -l")).stdout
             if "Undefined variable 'output'" in o:
                 # await ctx.send(f"{c}, {o}")
                 return await ctx.send("You did not define `output`!")
@@ -101,11 +97,7 @@ class Run:
         code = self.cleanup_code(code)
         async with aiofiles.open(f"users/u{ctx.author.id}.mb", mode="w") as f:
             await f.write(code)
-        o = (
-            await self.bot.shell.run(
-                f"mamba users/u{ctx.author.id}.mb -l"
-            )
-        ).stdout
+        o = (await self.bot.shell.run(f"mamba users/u{ctx.author.id}.mb -l")).stdout
         await ctx.send(f"```sh\n{o}\n```")
 
 
