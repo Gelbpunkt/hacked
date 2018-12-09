@@ -40,7 +40,7 @@ class Run:
         await self.bot.pool.execute(
             'INSERT INTO hacked ("user", "task") VALUES ($1, $2);', ctx.author.id, 1
         )
-        await ctx.send(self.bot.data.msg)
+        await ctx.send(self.bot.data.msg.format(ctx.prefix))
 
     @acc()
     @commands.command()
@@ -50,14 +50,15 @@ class Run:
             'SELECT task FROM hacked WHERE "user"=$1;', ctx.author.id
         )
         try:
-            await ctx.send(self.bot.data.tasks[val][1])
+            await ctx.send(self.bot.data.tasks[val][1].format(ctx.prefix))
         except KeyError:
             await ctx.send("You finished all levels.")
 
     @acc()
-    @commands.cooldown(1, 30, commands.BucketType.user)
+    @commands.cooldown(1, 15, commands.BucketType.user)
     @commands.command()
     async def solve(self, ctx, *, code: str):
+        """Solve your current task."""
         code = self.cleanup_code(code)
         val = await self.bot.pool.fetchval(
             'SELECT task FROM hacked WHERE "user"=$1;', ctx.author.id
@@ -85,9 +86,10 @@ class Run:
         )
         await ctx.send("Correct code! You have a new task available!")
 
-    @commands.cooldown(1, 30, commands.BucketType.user)
+    @commands.cooldown(1, 15, commands.BucketType.user)
     @commands.command()
     async def run(self, ctx, *, code: str):
+        """Run Mamba code."""
         code = self.cleanup_code(code)
         o = await self.run(code, identifier=ctx.author.id)
         await ctx.send(f"```sh\n{o}\n```")
