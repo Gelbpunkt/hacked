@@ -27,6 +27,8 @@ say(input); // just to see what the input is, you can skip this
 output = input[0]; // the first letter is the output now and it will be tested against a few values!
 \u200b`\u200b`\u200b`
 ```
+
+You can always use `{0}run` to try out code outside from `{0}solve`.
 """
 
 tasks = {
