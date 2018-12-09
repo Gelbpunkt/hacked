@@ -157,6 +157,8 @@ array_remove(array, 4); // remove item 4 (we start counting at 0)
 say(array); // [1, 2, 3, 4]
 array_insert(array, 2, 2.5); // insert 2.5 at the index 2
 say(array); // [1, 2, 2.5, 3, 4]
+item = array_pop(array); // this will remove the last item and return it
+say(item, array); // 4, [1, 2, 2.5, 3]
 ```
 
 Your task now is to make `output` be an array. The first element of `output` should be the last element of `input` and the last element of `output` should be the first element of `input`.
@@ -169,7 +171,7 @@ Good luck!
                 ["hi", "owo", "what", "is", "this"],
                 "['this', ['owo', 'what', 'is'], 'hi']",
             ],
-            [[[1]], "[[1], [1]]"],
+            [[[1], [2], [1]], "[[1], [2], [1]]"],
         ],
     ],
 }
