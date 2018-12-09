@@ -69,7 +69,7 @@ class Run:
             return await ctx.send("You finished all levels.")
         for i in input:
             c = self.make_code(i[0], code)
-            o = await self.run(c, identifier=ctx.author.id)
+            o = await self.run_code(c, identifier=ctx.author.id)
             if "Undefined variable 'output'" in o:
                 return await ctx.send("You did not define `output`!")
             elif (
@@ -91,7 +91,7 @@ class Run:
     async def run(self, ctx, *, code: str):
         """Run Mamba code."""
         code = self.cleanup_code(code)
-        o = await self.run(code, identifier=ctx.author.id)
+        o = await self.run_code(code, identifier=ctx.author.id)
         await ctx.send(f"```sh\n{o}\n```")
 
 
