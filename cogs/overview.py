@@ -30,7 +30,7 @@ class Overview:
     async def about(self, ctx):
         """Bot information about the language and the source."""
         await ctx.send(
-            "hacked. uses Mamba, a language written in Python.\nFind it here: https://github.com/Gelbpunkt/mamba-lang/\n\nMy source is found at https://github.com/Gelbpunkt/hacked/"
+            "hacked. uses Mamba, a language written in Python.\nFind it here: https://github.com/Gelbpunkt/mamba-lang/\n\nMy source is found at https://github.com/Gelbpunkt/hacked/\n\nDBL: https://discordbots.org/bot/439078630794985477"
         )
 
 
