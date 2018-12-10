@@ -206,6 +206,7 @@ say (thing)
 
 That code would go though every item in the array myArray, and print it out.
 The above loop would count from one to five.
+Remember that everything inside the `{}` is considered part of the loop, everything else is not.
 In the above examples, remember tat you can use anything for the word after `for` (the `thing` or the `i`), as long as
 the word isn't reserved, like for, if, while, not, etc.
 Now, your task is to take an input, and assign `output` to `input`'s reverse, with each item in the list being doubled.
@@ -229,6 +230,10 @@ This means count up from one to five, and each time you count, set `number` to t
 Your challenge is to count down from `input` to 0, and add up all the numbers along the way. Set that final total to `output`.
         """,
         [
-            [3, 6], [10, 55]
+            [3, 6],
+            [10, 55],
+            [7, 28],
+            [9, 45]
         ]
     ],
+}
