@@ -192,4 +192,26 @@ Your task now is to make `output` the sorted but reversed `input`, but the last 
             [[-1, -2], "[-1, 2018]"],
         ],
     ],
+    8: [
+        "For loops",
+        """
+That was nice! We will now be working with the `for` loop. This allows you to repeat a block of code a set amount of times,
+or perform an action with each item in an array. An example:
+`for thing in myArray {say (thing)}`
+That code would go though every item in the array myArray, and print it out. You can also use `for` loops to count.
+For example:
+```for i in 1 -> 5 {
+    say(i);
+}```
+The above loop would count from one to five.
+In the above examples, remember tat you can use anything for the word after `for` (the `thing` or the `i`), as long as
+the word isn't reserved, like for, if, while, not, etc.
+Now, your task is to take an input, and return it's reverse, with each item in the list being doubled.
+Type `{0}solve {{your code in a code block}}` to solve the task!
+        """,
+        [
+            [[1, 2, 3, 4], [8, 6, 4, 2]],
+            [[1.5, 1, 0.5], [1, 2, 3]]
+        ]
+    ]
 }
