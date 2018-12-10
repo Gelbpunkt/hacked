@@ -200,7 +200,7 @@ or perform an action with each item in an array. An example:
 
 ```js
 for thing in myArray {
-    sa (thing);
+    say(thing);
 }
 ```
 
@@ -229,5 +229,5 @@ This means count up from one to five, and each time you count, set `number` to t
 Your challenge is to count down from `input` to 0, and add up all the numbers along the way. Set that final total to `output`.
         """,
         [[3, 6], [10, 55], [7, 28], [9, 45]],
-    ],
+    ]
 }
