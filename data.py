@@ -192,4 +192,48 @@ Your task now is to make `output` the sorted but reversed `input`, but the last 
             [[-1, -2], "[-1, 2018]"],
         ],
     ],
+    8: [
+        "For loops",
+        """
+That was nice! We will now be working with the `for` loop. This allows you to repeat a block of code a set amount of times,
+or perform an action with each item in an array. An example:
+
+```js
+for thing in myArray {
+say (thing)
+}
+```
+
+That code would go though every item in the array myArray, and print it out.
+The above loop would count from one to five.
+Remember that everything inside the `{{}}` is considered part of the loop, everything else is not.
+In the above examples, remember tat you can use anything for the word after `for` (the `thing` or the `i`), as long as
+the word isn't reserved, like for, if, while, not, etc.
+Now, your task is to take an input, and assign `output` to `input`'s reverse, with each item in the list being doubled.
+        """,
+        [
+            [[1, 2, 3, 4], "[8, 6, 4, 2]"],
+            [[1.5, 1, 0.5], "[1, 2, 3]"]
+        ]
+    ],
+    9: [
+        "For loops 2",
+        """
+Great! You learned how to use `for` with arrays. But did you know that you can use `for` to count too?
+
+```js
+for number in 1 -> 5 {
+    say(number);
+}```
+
+This means count up from one to five, and each time you count, set `number` to the number you're on. If you flipped the arrow to `<-`, it would count down.
+Your challenge is to count down from `input` to 0, and add up all the numbers along the way. Set that final total to `output`.
+        """,
+        [
+            [3, "6"],
+            [10, "55"],
+            [7, "28"],
+            [9, "45"]
+        ]
+    ],
 }
