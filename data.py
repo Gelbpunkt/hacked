@@ -200,7 +200,7 @@ or perform an action with each item in an array. An example:
 
 ```js
 for thing in myArray {
-    sa (thing);
+    say(thing);
 }
 ```
 
@@ -216,14 +216,15 @@ Now, your task is to take an input, and assign `output` to `input`'s reverse, wi
         [[[1, 2, 3, 4], "[8, 6, 4, 2]"], [[1.5, 1, 0.5], "[1, 2, 3]"]],
     ],
     9: [
-        "For loops 2",
+        "For loops - 2",
         """
 Great! You learned how to use `for` with arrays. But did you know that you can use `for` to count too?
 
 ```js
 for number in 1 -> 5 {
     say(number);
-}```
+}
+```
 
 This means count up from one to five, and each time you count, set `number` to the number you're on. If you flipped the arrow to `<-`, it would count down.
 Your challenge is to count down from `input` to 0, and add up all the numbers along the way. Set that final total to `output`.
