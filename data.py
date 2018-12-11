@@ -199,9 +199,9 @@ That was nice! We will now be working with the `for` loop. This allows you to re
 or perform an action with each item in an array. An example:
 
 ```js
-for thing in myArray {
+for thing in myArray {{
     say(thing);
-}
+}}
 ```
 
 That code would go though every item in the array myArray, and print it out.
@@ -221,9 +221,9 @@ Now, your task is to take an input, and assign `output` to `input`'s reverse, wi
 Great! You learned how to use `for` with arrays. But did you know that you can use `for` to count too?
 
 ```js
-for number in 1 -> 5 {
+for number in 1 -> 5 {{
     say(number);
-}
+}}
 ```
 
 This means count up from one to five, and each time you count, set `number` to the number you're on. If you flipped the arrow to `<-`, it would count down.
