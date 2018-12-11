@@ -205,7 +205,6 @@ for thing in myArray {{
 ```
 
 That code would go though every item in the array myArray, and print it out.
-The above loop would count from one to five.
 Inside the loop, `thing` can be any variable name and will be the item that is currently being iterated.
 After the array has been processed, the code continues running below.
 Remember that everything inside the `{{}}` is considered part of the loop, everything else is not.
