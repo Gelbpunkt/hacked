@@ -208,8 +208,6 @@ That code would go though every item in the array myArray, and print it out.
 Inside the loop, `thing` can be any variable name and will be the item that is currently being iterated.
 After the array has been processed, the code continues running below.
 Remember that everything inside the `{{}}` is considered part of the loop, everything else is not.
-In the above examples, remember tat you can use anything for the word after `for` (the `thing` or the `i`), as long as
-the word isn't reserved, like for, if, while, not, etc.
 Now, your task is to take an input, and assign `output` to `input`'s reverse, with each item in the list being doubled.
         """,
         [[[1, 2, 3, 4], "[8, 6, 4, 2]"], [[1.5, 1, 0.5], "[1, 2, 3]"]],
