@@ -224,7 +224,7 @@ for number in 1 -> 5 {{
 ```
 
 This means count up from one to five, and each time you count, set `number` to the number you're on. If you flipped the arrow to `<-`, it would count down.
-Your challenge is to count down from `input` to 0, and add up all the numbers along the way. Set that final total to `output`.
+Your challenge is to count up from 0 to `input`, and add up all the numbers along the way. Set that final total to `output`.
         """,
         [[3, 6], [10, 55], [7, 28], [9, 45]],
     ],
