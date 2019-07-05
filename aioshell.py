@@ -17,7 +17,7 @@ class Result:
             self.stderr = None
 
     def __repr__(self):
-        return f"<Result status={self.status} stdout={len(self._stdout)} stderr={len(self._stderr)}>"
+        return f"<Result status={self.status} stdout={len(self._stdout)} stderr={len(self._stderr)}>"  # noqa
 
 
 async def run(shell_command):

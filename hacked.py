@@ -1,15 +1,14 @@
-import discord
 import asyncio
-import config
-import mamba
-import aioshell
+
 import aiohttp
 import asyncpg
 from discord.ext import commands
+
+import aioshell
+import config
 import data
 
 bot = commands.Bot(command_prefix="///", case_insensitive=True)
-bot.owners = [356091260429402122]
 
 
 @bot.event

@@ -1,11 +1,13 @@
-import discord
+import os
 import textwrap
+
 import aiofiles
 from discord.ext import commands
-from checks import *
+
+from checks import acc, no_acc
 
 
-class Run:
+class Run(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -14,9 +16,9 @@ class Run:
         # remove ```py\n```
         content = content.lstrip("\n").rstrip("\n")
         if content.startswith("```") and content.endswith("```"):
-            return "\n".join(l for l in content.split("\n")[1:] if l != "\n").rstrip(
-                "```"
-            )
+            return "\n".join(
+                line for line in content.split("\n")[1:] if line != "\n"
+            ).rstrip("```")
 
         # remove `foo`
         return content.strip("` \n")
@@ -24,14 +26,21 @@ class Run:
     def make_code(self, pre, code):
         """Make the code for ///solve"""
         code = textwrap.indent(code, "    ")
-        code = f"function main(input) {{\n{code}\n    return output;\n}}\nsay(main({pre}));"
+        code = f"""\
+function main(input) {{
+{code}
+    return output;
+}}
+say(main({pre}));"""
         return code
 
     async def run_code(self, code, identifier):
         """Runs our code using a new file for it."""
         async with aiofiles.open(f"users/u{identifier}.mb", mode="w") as f:
             await f.write(code)
-        return (await self.bot.shell.run(f"mamba users/u{identifier}.mb -l")).stdout
+        out = (await self.bot.shell.run(f"mamba users/u{identifier}.mb -l")).stdout
+        os.remove(f"users/u{identifier}.mb")
+        return out
 
     @no_acc()
     @commands.command()
@@ -76,10 +85,13 @@ class Run:
                 "illegal token 'return' found" in o
             ):  # most likely that they forgot the colon
                 return await ctx.send("You're missing a `;` at your last line.")
-            l = o.split("\n")[-2]
-            if l != str(i[1]):
+            line = o.split("\n")[-2]
+            if line != str(i[1]):
                 return await ctx.send(
-                    f"Your code didn't meet a test! We tested it with the input `{str(i[0])}` and got `{l}`! Expected output was `{i[1]}`.\n\nFull output below:\n```sh\n{o}```"
+                    "Your code didn't meet a test!"
+                    f"We tested it with the input `{i[0]}` and got `{line}`!"
+                    f"Expected output was `{i[1]}`.\n\n"
+                    f"Full output below:\n```sh\n{o}```"
                 )
         await self.bot.pool.execute(
             'UPDATE hacked SET task=task+1 WHERE "user"=$1;', ctx.author.id

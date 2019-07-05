@@ -1,9 +1,9 @@
-import discord
 from discord.ext import commands
-from checks import *
+
+from checks import acc
 
 
-class Overview:
+class Overview(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -17,7 +17,7 @@ class Overview:
     @commands.command()
     async def settask(self, ctx, task: int):
         """Change your current task."""
-        if not task in self.bot.data.tasks:
+        if task not in self.bot.data.tasks:
             return await ctx.send(f"{task} is not a vaild task number.")
         await self.bot.pool.execute(
             'UPDATE hacked SET task=$1 WHERE "user"=$2;', task, ctx.author.id
@@ -30,7 +30,13 @@ class Overview:
     async def about(self, ctx):
         """Bot information about the language and the source."""
         await ctx.send(
-            "hacked. uses Mamba, a language written in Python.\nFind it here: https://github.com/Gelbpunkt/mamba-lang/\n\nMy source is found at https://github.com/Gelbpunkt/hacked/\n\nDBL: https://discordbots.org/bot/439078630794985477"
+            """\
+hacked. uses Mamba, a language written in Python.
+Find it here: https://github.com/Gelbpunkt/mamba-lang/
+
+My source is found at https://github.com/Gelbpunkt/hacked/
+
+DBL: https://discordbots.org/bot/439078630794985477"""
         )
 
 

@@ -1,19 +1,22 @@
-import discord
-import traceback
-import sys
 import datetime
+import sys
+import traceback
+
+import discord
 from discord.ext import commands
-from checks import *
+
+from checks import NeedsAcc, NoAcc
 
 
-class Events:
+class Events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.auth_headers = {
             "Authorization": bot.config.dbltoken
         }  # needed for DBL requests
+        self.bot.on_command_error = self._on_command_error
 
-    async def on_command_error(self, ctx, error):
+    async def _on_command_error(self, ctx, error):
         error = getattr(error, "original", error)
         if isinstance(error, discord.Forbidden):
             return
@@ -26,9 +29,8 @@ class Events:
         elif isinstance(error, NoAcc):
             return await ctx.send("You need to have no account to use this command.")
         elif isinstance(error, commands.CommandOnCooldown):
-            return await ctx.send(
-                f"Cooldown! Wait {str(datetime.timedelta(seconds=error.retry_after)).split('.')[0]} and try again."
-            )
+            ttl = str(datetime.timedelta(seconds=error.retry_after)).split(".")[0]
+            return await ctx.send(f"Cooldown! Wait {ttl} and try again.")
         print("Ignoring exception in command {}:".format(ctx.command), file=sys.stderr)
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr
